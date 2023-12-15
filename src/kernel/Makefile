@@ -1,7 +1,7 @@
 # we build the kernel here
-TARGET_CC = i686-linux-gnu-gcc
+TARGET_CC = clang
 TARGET_ASM = nasm
-TARGET_LD = i686-linux-gnu-ld
+TARGET_LD = ld
 
 OUTKERNEL=../../boot/kernel.bin
 OUTDIR=../../boot
