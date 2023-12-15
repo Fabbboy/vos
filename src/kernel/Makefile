@@ -1,13 +1,13 @@
 # we build the kernel here
-TARGET_CC = clang
+TARGET_CC = gcc
 TARGET_ASM = nasm
 TARGET_LD = ld
 
-OUTKERNEL=../../boot/kernel.bin
+OUTKERNEL=../../boot/kernel.bin	
 OUTDIR=../../boot
 
 TARGET_ASMFLAGS = -f elf32
-TARGET_CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
+TARGET_CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs -c
 TARGET_LDFLAGS = -m elf_i386 -T linker.ld
 OBJ_DIR=obj
 
