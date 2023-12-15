@@ -3,8 +3,8 @@ TARGET_CC = i686-linux-gnu-gcc
 TARGET_ASM = nasm
 TARGET_LD = i686-linux-gnu-ld
 
-OUTKERNEL=../dist/kernel.bin
-OUTDIR=../dist
+OUTKERNEL=../../boot/kernel.bin
+OUTDIR=../../boot
 
 TARGET_ASMFLAGS = -f elf32
 TARGET_CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c

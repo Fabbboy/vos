@@ -1,4 +1,4 @@
-OUTDIR=dist
+OUTDIR=boot
 KERNEL=src/kernel/
 GRUB_CFG=grub.cfg
 
@@ -9,11 +9,13 @@ prepare:
 
 build:
 	@make -C $(KERNEL)
-	@grub-mkrescue -o $(OUTDIR)/os.iso
+	@mkdir -p $(OUTDIR)/grub
+	@cp $(GRUB_CFG) $(OUTDIR)/grub
+	@grub-mkrescue  /usr/lib/grub/i386-pc -o $(OUTDIR)/os.iso ./
 
 clean:
-	@rm -rf $(OUTDIR)
+	rm -rf $(OUTDIR)
 	@make -C $(KERNEL) clean
 
 run:
-	@qemu-system-i386 -cdrom $(OUTDIR)/os.iso -m 512M
+	@qemu-system-x86_64 -cdrom $(OUTDIR)/os.iso 

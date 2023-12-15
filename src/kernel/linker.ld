@@ -2,12 +2,16 @@ ENTRY(kentry)
 
 SECTIONS {
   . = 1M;
-  .multiboot_header : { *(.multiboot_header) }
+
+	.boot :
+	{
+		KEEP(*(.multiboot_header))
+	}
+
   .text : {
-    text_start = .;
-    *(.text)
-    text_end = .;
+  *(.text)
   }
+
 
   .data : {
     data_start = .;
