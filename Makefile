@@ -18,4 +18,4 @@ clean:
 	@make -C $(KERNEL) clean
 
 run:
-	@qemu-system-x86_64 -cdrom $(OUTDIR)/os.iso 
+	@qemu-system-x86_64 -cdrom $(OUTDIR)/os.iso -serial stdio

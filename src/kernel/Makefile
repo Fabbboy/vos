@@ -1,5 +1,5 @@
 # we build the kernel here
-TARGET_CC = gcc
+TARGET_CC = i686-linux-gnu-gcc
 TARGET_ASM = nasm
 TARGET_LD = ld
 
@@ -7,9 +7,9 @@ OUTKERNEL=../../boot/kernel.bin
 OUTDIR=../../boot
 
 TARGET_ASMFLAGS = -f elf32
-TARGET_CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs -c
+TARGET_CFLAGS = -m32 -nostdlib -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs -c -DTARGET_X86
 TARGET_LDFLAGS = -m elf_i386 -T linker.ld
-OBJ_DIR=obj
+OBJ_DIR=../obj
 
 SOURCES_C=$(shell find ./ -type f -name '*.c')
 SOURCES_ASM=$(shell find ./ -type f -name '*.asm')
