@@ -11,4 +11,4 @@ sudo apt install nasm
 sudo apt install qemu-system
 sudo apt install bochs
 sudo apt install libsdl2-dev
-sudo apt install libcanberra-gtk-module libcanberra-gtk3-modul
+sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
