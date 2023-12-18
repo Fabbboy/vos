@@ -21,3 +21,6 @@ jobs:
 
     - name: Verify
       run: ls -l boot/os.iso && file boot/os.iso
+
+    - name: Checksum
+      run: sha256sum boot/os.iso
