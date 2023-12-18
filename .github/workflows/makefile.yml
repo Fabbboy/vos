@@ -20,4 +20,4 @@ jobs:
       run: make
 
     - name: Verify
-      run: ls -l boot/os.iso
+      run: ls -l boot/os.iso && file boot/os.iso
