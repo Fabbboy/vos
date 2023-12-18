@@ -1,6 +1,9 @@
 # V-OS
 [![Build develop branch](https://github.com/Fabbboy/vos/actions/workflows/makefile.yml/badge.svg)](https://github.com/Fabbboy/vos/actions/workflows/makefile.yml)
 
+### Feature Branches:
+[![Build IDT Feature](https://github.com/Fabbboy/vos/actions/workflows/idt.yml/badge.svg)](https://github.com/Fabbboy/vos/actions/workflows/idt.yml)
+
 ## Description
 
 This project is a work-in-progress operating system written in C and Assembly. It utilizes the Multiboot2 specification and Grub bootloader. The main goal of this project is to create a lightweight and efficient operating system that can be used for educational purposes, experimentation, and further development.
