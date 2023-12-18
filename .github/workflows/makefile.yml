@@ -1,7 +1,7 @@
 name: Build develop branch
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "develop", "feature/idt" ]
   pull_request:
     branches: [ "develop" ]
 
