@@ -2,23 +2,22 @@ name: Build develop
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: ["develop"]
   pull_request:
-    branches: [ "develop" ]
+    branches: ["develop"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: make deps
+      - name: Install dependencies
+        run: make deps
 
-    - name: Build project
-      run: make
-
-    - name: Run project
-      run: make run
+      - name: Build project
+        run: make
+      
+      - name: "Check ISO"
+        run: ls boot/os.iso
