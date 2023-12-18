@@ -1,0 +1,15 @@
+cpu: count=2, reset_on_triple_fault=0
+
+display_library: x, options="gui_debug"
+
+megs: 512
+
+clock: sync=realtime, time0=local
+
+ata0-slave: type=cdrom, path="boot/os.iso", mode=flat, status=inserted
+
+boot: cdrom
+
+log: ./bochsout.txt
+
+magic_break: enabled=1

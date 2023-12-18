@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include "driver/serial/serial.h"
 #include <stdbool.h>
+#include "lib/string.h"
 
 #define COM1 0x3F8
 
