@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         if: steps.cache-apt.outputs.cache-hit != 'true'
         run: |
-          sudo ./install.sh
+          sudo sh install.sh
           sudo chown -R $USER:$USER /var/cache/apt/archives
 
       - name: Build project
