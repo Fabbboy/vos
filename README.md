@@ -1,5 +1,5 @@
 # V-OS
-[![Build develop branch](https://github.com/Fabbboy/vos/actions/workflows/makefile.yml/badge.svg?branch=develop)](https://github.com/Fabbboy/vos/actions/workflows/makefile.yml)
+[![Build develop branch](https://github.com/Fabbboy/vos/actions/workflows/makefile.yml/badge.svg)](https://github.com/Fabbboy/vos/actions/workflows/makefile.yml)
 
 ## Description
 
