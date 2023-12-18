@@ -5,3 +5,10 @@ gdt_load:
   ; make a new call frame
   push ebp
   mov ebp, esp
+
+  ; load the gdt
+
+  ; restore the old call frame
+  mov esp, ebp
+  pop ebp
+  ret
