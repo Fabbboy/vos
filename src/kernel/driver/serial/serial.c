@@ -25,6 +25,10 @@ bool serial_received(uint16_t com) {
   return inb(com + 5) & 1;
 }
 
+bool serial_is_init(uint16_t com){
+  return inb(com + 5) & 0x80;
+};
+
 void serial_write(uint16_t com, char* data, uint32_t length) {
   for (uint32_t i = 0; i < length; i++) {
     while (!serial_is_transmit_fifo_empty(com));

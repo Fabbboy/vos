@@ -40,6 +40,14 @@ bool serial_is_transmit_fifo_empty(uint16_t com);
 bool serial_received(uint16_t com);
 
 /**
+ * @brief Checks if the serial port with the specified COM number is initialized.
+ *
+ * @param com The COM number of the serial port.
+ * @return true if the serial port is initialized, false otherwise.
+ */
+bool serial_is_init(uint16_t com);
+
+/**
  * @brief Writes data to the serial port.
  * 
  * @param com The COM port number.
