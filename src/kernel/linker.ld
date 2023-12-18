@@ -12,7 +12,6 @@ SECTIONS {
   *(.text)
   }
 
-
   .data : {
     *(.data)
   }
