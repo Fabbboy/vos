@@ -17,5 +17,8 @@ clean:
 	rm -rf $(OUTDIR)
 	@make -C $(KERNEL) clean
 
+deps:
+	sh install.sh
+
 run:
 	@qemu-system-x86_64 -cdrom $(OUTDIR)/os.iso -serial stdio
