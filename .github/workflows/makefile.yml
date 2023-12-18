@@ -13,11 +13,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            path/to/your/dependencies
+            another/path/to/cache
+          key: ${{ runner.os }}-deps-${{ hashFiles('**/lockfile') }}
+          restore-keys: |
+            ${{ runner.os }}-deps-
+
       - name: Install dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: make deps
 
       - name: Build project
         run: make
-      
+
       - name: "Check ISO"
         run: ls boot/os.iso
