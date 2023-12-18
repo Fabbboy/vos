@@ -36,6 +36,7 @@ $(OBJ_DIR)/%.o: %.asm
 	@$(TARGET_ASM) $(TARGET_ASMFLAGS) $< -o $@
 	@echo "Assembled "$<" successfully!"
 
+
 ## We create the output directory
 prepare:
 	@mkdir -p $(OUTDIR)

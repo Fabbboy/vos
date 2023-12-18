@@ -1,4 +1,5 @@
 #include "driver/serial/serial.h"
+#include "hal/interrupts/gdt.h"
 #include "lib/multiboot2.h"
 #include "lib/string.h"
 #include <stdbool.h>
@@ -22,7 +23,15 @@ void kernel_main(uint32_t magic, uint32_t multiboot_info_ptr) {
     return;
   }
 
-  struct multiboot_header_tag *tag = (struct multiboot_header_tag *)multiboot_info_ptr;
+  /// Extract informations from multiboot2 header
+  struct multiboot_header_tag *tag =
+      (struct multiboot_header_tag *)multiboot_info_ptr;
+
+  //// Load GDT
+  init_gdt();
+  if (enable_debug) {
+    serial_write(COM1, "GDT initialized\n", 16);
+  }
 
   // TODO: maybe move this if while needs serial
   serial_cleanup(COM1);
