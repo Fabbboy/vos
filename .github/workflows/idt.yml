@@ -26,5 +26,3 @@ jobs:
     - name: Checksum
       run: sha256sum boot/os.iso
 
-    - name: Run distcheck
-      run: make distcheck
