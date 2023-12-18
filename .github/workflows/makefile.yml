@@ -13,19 +13,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Cache dependencies
+      - name: Cache APT packages
         uses: actions/cache@v2
         with:
-          path: |
-            path/to/your/dependencies
-            another/path/to/cache
-          key: ${{ runner.os }}-deps-${{ hashFiles('**/lockfile') }}
+          path: /var/cache/apt/archives
+          key: ${{ runner.os }}-apt-${{ hashFiles('**/install.sh') }}
           restore-keys: |
-            ${{ runner.os }}-deps-
+            ${{ runner.os }}-apt-
 
       - name: Install dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: make deps
+        if: steps.cache-apt.outputs.cache-hit != 'true'
+        run: |
+          sudo ./install.sh
+          sudo chown -R $USER:$USER /var/cache/apt/archives
 
       - name: Build project
         run: make
