@@ -1,4 +1,4 @@
-#include "assets/multiboot2.h"
+#include "lib/multiboot2.h"
 #include <stdint.h>
 #include "driver/serial/serial.h"
 #include <stdbool.h>
