@@ -1,5 +1,6 @@
 #include "driver/serial/serial.h"
 #include "hal/interrupts/gdt.h"
+#include "hal/interrupts/idt.h"
 #include "lib/multiboot2.h"
 #include "lib/string.h"
 #include <stdbool.h>
@@ -31,6 +32,10 @@ void kernel_main(uint32_t magic, uint32_t multiboot_info_ptr) {
   init_gdt();
   if (enable_debug) {
     serial_write(COM1, "GDT initialized\n", 16);
+  }
+  idt_init();
+  if (enable_debug) {
+    serial_write(COM1, "IDT initialized\n", 16);
   }
 
   // TODO: maybe move this if while needs serial
