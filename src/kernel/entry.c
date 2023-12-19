@@ -2,13 +2,12 @@
 #include "driver/serial/serial_utils.h"
 #include "hal/interrupts/gdt.h"
 #include "hal/interrupts/idt.h"
+#include "hal/interrupts/isr.h"
 #include "lib/multiboot2.h"
 #include "lib/string.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include "globals.h"
-
-#define COM1 0x3F8
 
 void hal_init() {
   init_gdt();
@@ -30,6 +29,10 @@ void hal_init() {
     serial_write(COM1, "IDT verification failed\n", 24);
   }
 
+#endif
+  isr_init();
+#ifdef DEBUG
+  serial_write(COM1, "ISR initialized\n", 16);
 #endif
 }
 
