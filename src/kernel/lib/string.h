@@ -25,3 +25,12 @@ uint64_t strlen(const char* str);
  * @return true if the strings are equal, false otherwise.
  */
 bool strcmp(const char* str1, const char* str2);
+
+/**
+ * Concatenates the string pointed to by src to the end of the string pointed to by dest.
+ *
+ * @param dest The destination string where the concatenated string will be stored.
+ * @param src The source string to be concatenated.
+ * @return A pointer to the resulting string dest.
+ */
+char* strcat(char* dest, const char* src);

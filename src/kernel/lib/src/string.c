@@ -21,3 +21,13 @@ bool strcmp(const char* str1, const char* str2){
   }
   return true;
 };
+
+char* strcat(char* dest, const char* src){
+  uint64_t dest_len = strlen(dest);
+  uint64_t src_len = strlen(src);
+  for (uint64_t i = 0; i < src_len; i++) {
+    dest[dest_len + i] = src[i];
+  }
+  dest[dest_len + src_len] = '\0';
+  return dest;
+};

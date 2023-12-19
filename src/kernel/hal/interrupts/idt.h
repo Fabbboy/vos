@@ -40,3 +40,4 @@ void idt_set_gate (uint8_t index, uint32_t base, uint16_t selector, uint8_t flag
 void idt_enable_gate(uint8_t index);
 void idt_disable_gate(uint8_t index);
 void idt_init();
+bool verify_idt();

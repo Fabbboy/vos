@@ -39,3 +39,15 @@ gdt_descriptor_t g_GDTDescriptor = {
 void init_gdt() {
   gdt_load(&g_GDTDescriptor, GDT_CODE_SEGMENT, GDT_DATA_SEGMENT);
 }
+
+bool verify_gdt(){
+  if (g_GDTDescriptor.limit != sizeof(g_GDT) - 1){
+    return false;
+  }
+
+  if (g_GDTDescriptor.base != (intptr_t)g_GDT){
+    return false;
+  }
+
+  return true;
+};

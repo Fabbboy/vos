@@ -57,3 +57,4 @@ gdt_load(gdt_descriptor_t *gdt_descriptor, uint16_t code_segment,
 
 extern gdt_entry_t g_GDT[];
 extern gdt_descriptor_t g_GDTDescriptor;
+bool verify_gdt();

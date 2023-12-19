@@ -25,3 +25,15 @@ void idt_disable_gate(uint8_t index){
 void idt_init(){
   idt_load(&idt_descriptor);
 };
+
+bool verify_idt(){
+  if (idt_descriptor.limit != sizeof(idt) - 1){
+    return false;
+  }
+
+  if (idt_descriptor.base != idt){
+    return false;
+  }
+
+  return true;
+};
