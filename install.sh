@@ -1,14 +1,3 @@
-yes | sudo apt update
-yes | sudo apt upgrade
-yes | sudo apt install build-essential
-yes | sudo apt install gcc-i686-linux-gnu
-yes | sudo apt install binutils
-yes | sudo apt install grub-common
-yes | sudo apt install xorriso
-yes | sudo apt install mtools
-yes | sudo apt install grub-pc-bin
-yes | sudo apt install nasm
-yes | sudo apt install qemu-system
-yes | sudo apt install bochs
-yes | sudo apt install libsdl2-dev
-yes | sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install build-essential gcc-i686-linux-gnu binutils grub-common xorriso mtools grub-pc-bin nasm qemu-systembochs libsdl2-dev libcanberra-gtk-module libcanberra-gtk3-module -y
