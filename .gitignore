@@ -1,3 +1,5 @@
 /boot/
 /.vscode/
 src/obj
+bochsout.txt
+bx_enh_dbg.ini

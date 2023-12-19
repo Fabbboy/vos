@@ -1,0 +1,26 @@
+name: Build develop branch
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: make deps
+
+    - name: Run build
+      run: make
+
+    - name: Verify
+      run: ls -l boot/os.iso && file boot/os.iso
+
+    - name: Checksum
+      run: sha256sum boot/os.iso

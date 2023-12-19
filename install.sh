@@ -1,10 +1,14 @@
-sudo apt update
-sudo apt upgrade
-sudo apt install binutils
-sudo apt install grub-common
-sudo apt install xorriso
-sudo apt install mtools
-sudo apt install grub-pc-bin
-sudo apt install llvm
-sudo apt install nasm
-sudo apt install qemu-system
+yes | sudo apt update
+yes | sudo apt upgrade
+yes | sudo apt install build-essential
+yes | sudo apt install gcc-i686-linux-gnu
+yes | sudo apt install binutils
+yes | sudo apt install grub-common
+yes | sudo apt install xorriso
+yes | sudo apt install mtools
+yes | sudo apt install grub-pc-bin
+yes | sudo apt install nasm
+yes | sudo apt install qemu-system
+yes | sudo apt install bochs
+yes | sudo apt install libsdl2-dev
+yes | sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
