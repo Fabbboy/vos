@@ -30,8 +30,9 @@ header_end:
 
 section .bss
 align 4
+stack_end:
+  resb 0x100000 ; 1MB
 stack_space:
-  resb 0x100000
 
 global start
 section .text
@@ -39,7 +40,8 @@ global kentry
 extern kernel_main
 bits 32
 kentry: 
-  mov esp, stack_space
+  mov esp, stack_end
+  mov ebp, stack_end
 
   ; clear flags
   push 0
