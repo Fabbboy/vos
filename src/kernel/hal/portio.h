@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include "../utils/binary.h"
 
 /**
  * @brief Writes a byte to the specified I/O port.
@@ -61,3 +62,12 @@ static inline void outw(uint16_t port, uint16_t val) {
 static inline void io_wait(void) {
   asm volatile("outb %%al, $0x80" : : "a"(0));
 }
+/**
+ * Enables interrupts.
+ */
+static inline void enable_interrupts() { asm volatile("sti"); }
+
+/**
+ * Disables interrupts.
+ */
+static inline void disable_interrupts() { asm volatile("cli"); }

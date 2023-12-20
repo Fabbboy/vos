@@ -1,4 +1,6 @@
 #include "isr.h"
+#include "stddef.h"
+#include "../../globals.h"
 
 #define PIC1 0x20 // Master PIC
 #define PIC2 0xA0 // Slave PIC
@@ -28,4 +30,17 @@ typedef void (*IRQ_Handler)(registers_t *);
 
 // EOI = End Of Interrupt
 void PIC_sendEOI(uint8_t irq);
+
 void PIC_remap();
+void PIC_disable();
+
+void irq_set_mask(uint8_t irq_line);
+void irq_clear_mask(uint8_t irq_line);
+
+void irq_register_handler(uint8_t irq_line, IRQ_Handler handler);
+void irq_unregister_handler(uint8_t irq_line);
+
+void irq_init();
+
+uint16_t pic_get_irr();
+uint16_t pic_get_isr();
