@@ -2,6 +2,7 @@
 #include "driver/serial/serial_utils.h"
 #include "hal/interrupts/gdt.h"
 #include "hal/interrupts/idt.h"
+#include "hal/interrupts/irq.h"
 #include "hal/interrupts/isr.h"
 #include "lib/multiboot2.h"
 #include "lib/string.h"
@@ -34,6 +35,10 @@ void hal_init() {
 #ifdef DEBUG
   serial_write(COM1, "ISR initialized\n", 16);
 #endif
+  irq_init();
+#ifdef DEBUG
+  serial_write(COM1, "IRQ initialized\n", 16);
+#endif
 }
 
 void kernel_main(uint32_t magic, uint32_t multiboot_info_ptr) {
@@ -41,6 +46,8 @@ void kernel_main(uint32_t magic, uint32_t multiboot_info_ptr) {
 #ifdef DEBUG
   serial_write(COM1, "Serial initialized on COM1\n", 27);
 #endif
+  //// Load IDT and GDT
+  hal_init();
 
   if (magic != MULTIBOOT2_BOOTLOADER_MAGIC) {
     serial_write(COM1, "Invalid magic number\n", 21);
@@ -54,12 +61,8 @@ void kernel_main(uint32_t magic, uint32_t multiboot_info_ptr) {
   /// Extract informations from multiboot2 header
   struct multiboot_header_tag *tag =
       (struct multiboot_header_tag *)multiboot_info_ptr;
-
-  //// Load IDT and GDT
-  hal_init();
-
+  serial_write(COM1, "Multiboot2 header tag: ", 23);
   // TODO: maybe move this if while needs serial
   serial_cleanup(COM1);
-  while (1)
-    ;
+  for(;;);
 }

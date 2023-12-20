@@ -32,6 +32,7 @@ section .bss
 align 4
 stack_end:
   resb 0x100000 ; 1MB
+align 4
 stack_space:
 
 global start

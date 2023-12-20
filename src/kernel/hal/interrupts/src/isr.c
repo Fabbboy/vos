@@ -146,7 +146,7 @@ void isr_init_gates() {
 
 void isr_init() {
   isr_init_gates();
-  for (int i = 0; i < 32; i++) {
+  for (int i = 0; i < 255; i++) {
     idt_enable_gate(i);
   }
 

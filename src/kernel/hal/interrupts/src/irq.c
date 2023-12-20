@@ -95,7 +95,7 @@ void irq_handler(registers_t *regs){
 void irq_init(){
   PIC_remap();
   for (int i = 0; i < 16; i++) {
-    irq_register_handler(i + 32, irq_handlers[i]);
+    irq_register_handler(i + 32, irq_handler);
   }
   enable_interrupts();
 }
