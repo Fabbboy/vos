@@ -46,8 +46,6 @@ void kernel_main(uint32_t magic, uint32_t multiboot_info_ptr) {
 #ifdef DEBUG
   serial_write(COM1, "Serial initialized on COM1\n", 27);
 #endif
-  //// Load IDT and GDT
-  hal_init();
 
   if (magic != MULTIBOOT2_BOOTLOADER_MAGIC) {
     serial_write(COM1, "Invalid magic number\n", 21);
@@ -58,10 +56,9 @@ void kernel_main(uint32_t magic, uint32_t multiboot_info_ptr) {
     return;
   }
 
-  /// Extract informations from multiboot2 header
-  struct multiboot_header_tag *tag =
-      (struct multiboot_header_tag *)multiboot_info_ptr;
-  serial_write(COM1, "Multiboot2 header tag: ", 23);
+    //// Load IDT and GDT
+  hal_init();
+
   // TODO: maybe move this if while needs serial
   serial_cleanup(COM1);
   for(;;);

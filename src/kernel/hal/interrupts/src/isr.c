@@ -143,16 +143,33 @@ void isr_init_gates() {
   idt_set_gate(31, (uint32_t)isr_31_handler, GDT_CODE_SEGMENT,
                IDT_FLAG_GATE_32BIT_INT | IDT_FLAG_RING_0 | IDT_FLAG_PRESENT);
 }
-
+void print_exception(registers_t *regs) ;
 void isr_init() {
   isr_init_gates();
   for (int i = 0; i < 255; i++) {
+    if (i < 32) {
+      isr_handler_register(i, print_exception);
+    }
     idt_enable_gate(i);
   }
 
 };
 
+void print_exception(registers_t *regs) {
+  serial_write_hex(COM1, regs->int_no);
+  serial_write(COM1, " ", 1);
+  serial_write(COM1, g_Exceptions[regs->int_no], strlen(g_Exceptions[regs->int_no]));
+  serial_write(COM1, "\n", 1);
+  panic("\r", 0x02, COM1);
+}
+
 void isr_handler_register(uint8_t index, ISR_Handler handler) {
+  #ifdef DEBUG
+  serial_write(COM1, "ISR: Registering handler for ISR ", 32);
+  serial_write_hex(COM1, index);
+  serial_write(COM1, "\n", 1);
+  #endif
+
   isr_handlers[index] = handler;
 };
 
@@ -160,12 +177,6 @@ void isr_handler_register(uint8_t index, ISR_Handler handler) {
 void __attribute__((cdecl)) isr_handler(registers_t *regs) {
   if (isr_handlers[regs->int_no] != 0) {
     isr_handlers[regs->int_no](regs);
-  } else if (regs->int_no < 32) {
-    serial_write_hex(COM1, regs->int_no);
-    serial_write(COM1, " ", 1);
-    serial_write(COM1, g_Exceptions[regs->int_no], strlen(g_Exceptions[regs->int_no]));
-    serial_write(COM1, "\n", 1);
-    panic("\r", 0x02, COM1);
   }else {
     serial_write_hex(COM1, regs->int_no);
     serial_write(COM1, " ", 1);
