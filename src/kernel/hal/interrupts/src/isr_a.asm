@@ -5,7 +5,6 @@ extern isr_handler
 %macro ISR 1
 global isr_%1_handler
 isr_%1_handler:
-  push 0
   push %1
   jmp isr_common
 %endmacro

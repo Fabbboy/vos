@@ -13,6 +13,10 @@ typedef struct {
       ss; // Pushed by the processor automatically.
 } __attribute__((packed)) registers_t;
 
+typedef void (*ISR_Handler)(registers_t *);
+
 void __attribute__((cdecl)) isr_handler(registers_t *regs);
 void isr_init_gates();
 void isr_init();
+
+void isr_handler_register(uint8_t index, ISR_Handler handler);
