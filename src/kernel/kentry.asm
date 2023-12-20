@@ -41,7 +41,7 @@ extern kernel_main
 bits 32
 kentry: 
   mov esp, stack_end
-  mov ebp, stack_end
+  mov ebp, esp
 
   ; clear flags
   push 0

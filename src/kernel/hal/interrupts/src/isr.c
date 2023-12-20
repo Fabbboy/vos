@@ -165,11 +165,11 @@ void __attribute__((cdecl)) isr_handler(registers_t *regs) {
     serial_write(COM1, " ", 1);
     serial_write(COM1, g_Exceptions[regs->int_no], strlen(g_Exceptions[regs->int_no]));
     serial_write(COM1, "\n", 1);
-    panic("", 0x01, COM1);
+    panic("\r", 0x02, COM1);
   }else {
     serial_write_hex(COM1, regs->int_no);
     serial_write(COM1, " ", 1);
     serial_write(COM1, "Unknown interrupt\n", 18);
-    panic("", 0x01, COM1);
+    panic("\r", 0x01, COM1);
   }
 }
