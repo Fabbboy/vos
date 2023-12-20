@@ -146,7 +146,7 @@ void isr_init_gates() {
 void print_exception(registers_t *regs) ;
 void isr_init() {
   isr_init_gates();
-  for (int i = 0; i < 255; i++) {
+  for (int i = 0; i < 256; i++) {
     if (i < 32) {
       isr_handler_register(i, print_exception);
     }

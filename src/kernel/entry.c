@@ -35,10 +35,12 @@ void hal_init() {
 #ifdef DEBUG
   serial_write(COM1, "ISR initialized\n", 16);
 #endif
-  irq_init();
+/*  irq_init();
 #ifdef DEBUG
   serial_write(COM1, "IRQ initialized\n", 16);
 #endif
+*/
+  __asm__ volatile("sti");
 }
 
 void kernel_main(uint32_t magic, uint32_t multiboot_info_ptr) {

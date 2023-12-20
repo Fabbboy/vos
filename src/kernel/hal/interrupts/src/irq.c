@@ -97,7 +97,6 @@ void irq_init(){
   for (int i = 0; i < 16; i++) {
     irq_register_handler(i + 32, irq_handler);
   }
-  enable_interrupts();
 }
 
 uint16_t pic_get_irr(){
